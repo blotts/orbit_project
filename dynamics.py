@@ -1,20 +1,25 @@
 import numpy as np
+from scipy.integrate import solve_ivp
 from constants import MU
 
-def acceleration(r, mu=MU):
+def acceleration(r, MU):
     r_norm = np.linalg.norm(r)
-    a = -mu * r / r_norm**3
-
+    a = -MU * r / r_norm**3
     return a
 
-def step(state, dt, mu=MU):
-    r = np.array(state[:3])
-    v = np.array(state[3:])
-    a = acceleration(r, mu)
+def propagate(state, t_current, t_next):
 
-    r_new = r + v * dt
-    v_new = v + a * dt
+    def state_eq(t, q):
+        r = q[:3]
+        v = q[3:]
+        a = acceleration(r, MU)
+        return np.concatenate([v, a])
 
-    state_new = np.concatenate([r_new, v_new])
-    
-    return state_new
+    sol = solve_ivp(
+        state_eq, 
+        [t_current, t_next], 
+        state, 
+        method = 'DOP853', 
+        t_eval = [t_next])
+
+    return sol.y[:, -1]
