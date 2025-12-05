@@ -7,19 +7,37 @@ def acceleration(r, MU):
     a = -MU * r / r_norm**3
     return a
 
-def propagate(state, t_current, t_next):
+def state_eq(t, q):
+    r = q[:3]
+    v = q[3:]
+    a = acceleration(r, MU)
+    return np.concatenate([v, a])
 
-    def state_eq(t, q):
-        r = q[:3]
-        v = q[3:]
-        a = acceleration(r, MU)
-        return np.concatenate([v, a])
+def propagate(state0, t_span, dt):
 
-    sol = solve_ivp(
-        state_eq, 
-        [t_current, t_next], 
-        state, 
-        method = 'DOP853', 
-        t_eval = [t_next])
+    cols = int((t_span[1] - t_span[0]) / dt + 1)
+    states = np.zeros([6, cols])
+    states[:, 0] = state0
 
-    return sol.y[:, -1]
+    t_current = t_span[0]
+    t_next = t_current + dt
+
+    t = np.zeros(cols)
+    t[0] = t_current
+
+    for i in range(1, cols):
+
+        sol = solve_ivp(
+            state_eq, 
+            [t_current, t_next], 
+            states[:, i - 1], 
+            method = 'DOP853', 
+            t_eval = [t_next])
+
+        t[i] = t_next
+        t_current = t_next
+        t_next = t_current + dt
+
+        states[:, i] = sol.y[:, -1]
+
+    return states, t
