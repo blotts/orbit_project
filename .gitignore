@@ -13,7 +13,7 @@ env/
 .DS_Store
 Thumbs.db
 
-# Plot images or output logs (optional)
+# Plot images or output logs
 *.png
 *.log
 

@@ -24,12 +24,12 @@ computes classical orbital elements, and generates clean 2D/3D visualizations.
 ---
 
 ## Project Structure
-constants.py — physical constants  
-dynamics.py — propagation + gravitational model  
-elements.py — Cartesian → orbital elements  
-plotting.py — 2D/3D visualization utilities  
-run_orbit.py — main simulation driver  
-input.json — user-defined initial conditions  
+`constants.py` — physical constants  
+`dynamics.py` — propagation + gravitational model  
+`elements.py` — Cartesian → orbital elements  
+`plotting.py` — 2D/3D visualization utilities  
+`run_orbit.py` — main simulation driver  
+`input.json` — user-defined initial conditions  
 
 ---
 
@@ -50,4 +50,4 @@ Future additions can include:
 - J2 or higher-order gravity  
 - Drag, SRP, or custom forces  
 - Maneuver modeling  
-- Ground tracks, radius plots, or Monte-Carlo runs  
+- Ground tracks and instantaneous/mean altitude plots  
