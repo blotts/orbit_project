@@ -1,6 +1,17 @@
 {
-  "r0": [2683.0, -1549.0, -6186.0],
-  "v0": [5.006, 8.671, 0.0],
-  "t_span": [0.0, 30.0e3],
-  "dt": 90.0
+  "description": "Highly elliptical Earth orbit, ECI frame",
+  "frame": "ECI",
+  "units": {
+    "position": "km",
+    "velocity": "km/s",
+    "time": "s"
+  },
+  "initial_state": {
+    "r0": [2683.0, -1549.0, -6186.0],
+    "v0": [5.006, 8.671, 0.0]
+  },
+  "integration": {
+    "t_span": [0.0, 30000.0],
+    "dt": 30.0
+  }
 }
