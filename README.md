@@ -1,98 +1,61 @@
-# Orbit Project
+# 🚀 Orbit Project
 
-This project implements a complete orbital mechanics workflow in Python, including numerical propagation of a two-body orbit, orbital element computation, and interactive 2D/3D visualizations.
 
-The simulation loads initial conditions from a JSON file, propagates the spacecraft state using a high-order integrator, converts Cartesian state vectors into classical orbital elements, and generates a collection of plots that describe the orbit’s geometry and time evolution.
 
-All quantities use kilometers, km/s, and seconds. All vectors are expressed in the Earth-Centered Inertial (ECI) frame.
+
+
+
+
+
+A minimalist two-body orbital dynamics simulator written in Python.
+The project propagates spacecraft motion using a high-order DOP853 integrator,
+computes classical orbital elements, and generates clean 2D/3D visualizations.
+
+Designed to be readable, modular, and extensible — suitable for aerospace,
+mission design, and scientific computing portfolios.
 
 ---
 
-## Features
-
+## ✨ Features
 • Two-body gravitational dynamics
-• High-accuracy DOP853 propagation from SciPy
-• Conversion from position/velocity to classical orbital elements
-• 3D orbit visualization with Earth rendered as a sphere
-• Automatic generation of diagnostic plots, including:
-– Semi-major axis
-– Eccentricity
-– Inclination
-– RAAN (Ω)
-– Argument of periapsis (ω)
-– Mean anomaly (M)
+• High-accuracy DOP853 propagation
+• Orbital element generation (a, e, i, Ω, ω, M)
+• Interactive 3D orbit visualization
+• Fully JSON-driven input configuration
+• Lightweight and easy to extend
 
 ---
 
-## Project Structure
-
-The repository is organized into focused modules:
-
-Orbit_Project
-• constants.py – Physical constants
-• dynamics.py – Gravitational model and numerical state propagation
-• elements.py – Conversion from Cartesian state to orbital elements
-• plotting.py – Interactive 2D and 3D visualization utilities
-• run_orbit.py – Main entry point for running simulations
-• input.json – User-defined initial conditions and integrator settings
+## 📁 Project Structure
+constants.py — physical constants
+dynamics.py — propagation + gravitational model
+elements.py — Cartesian → orbital elements
+plotting.py — 2D/3D visualization utilities
+run_orbit.py — main simulation driver
+input.json — user-defined initial conditions
 
 ---
 
-## Input Configuration
+## ▶️ Usage
 
-The simulation is driven entirely by an input JSON file containing initial conditions and integration settings.
-
-Example fields:
-
-• r0 – Initial ECI position vector in kilometers
-• v0 – Initial ECI velocity vector in km/s
-• t_span – Start and end times for the simulation
-• dt – Output time step
-
-Keeping inputs external allows you to change missions or test cases without touching the source code.
-
----
-
-## Installation
-
-Required packages:
-
-• Python 3.9 or later
-• NumPy
-• SciPy
-• Plotly
-
-Install packages with:
-
+Install dependencies:
 pip install numpy scipy plotly
 
----
-
-## Usage
-
-Run the JSON configuration:
-
+Run a simulation:
 python run_orbit.py
 
-After running, the script displays:
-
-• A 3D orbit visualization
-• Semi-major axis vs. time
-• Eccentricity vs. time
-• Inclination vs. time
-• RAAN vs. time
-• Argument of periapsis vs. time
-• Mean anomaly vs. time
+Input JSON file can be copied and modified to simulate custom orbits
 
 ---
 
-## Extending the Project
+## 🔧 Extend the Project
+Easy to expand with:
+• J2 or higher-order gravity
+• Drag, SRP, or custom forces
+• Maneuver modeling
+• Ground tracks, radius plots, or Monte-Carlo runs
 
-The modular structure makes the project easy to expand. Possible extensions:
+---
 
-• J2 or higher-order gravitational models
-• Atmospheric drag or solar radiation pressure
-• Ground track generation
-• Impulsive or finite-burn maneuvers
-• Monte Carlo analysis for sensitivity studies
-• Relative motion modeling
+## 📄 License
+For educational and personal use.
