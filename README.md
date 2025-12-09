@@ -1,4 +1,4 @@
-# 🚀 Orbit Project
+# Orbit Project
 
 
 
@@ -11,12 +11,9 @@ A minimalist two-body orbital dynamics simulator written in Python.
 The project propagates spacecraft motion using a high-order DOP853 integrator,
 computes classical orbital elements, and generates clean 2D/3D visualizations.
 
-Designed to be readable, modular, and extensible — suitable for aerospace,
-mission design, and scientific computing portfolios.
-
 ---
 
-## ✨ Features
+## Features
 - Two-body gravitational dynamics  
 - High-accuracy DOP853 propagation  
 - Orbital element generation (a, e, i, Ω, ω, M)  
@@ -26,7 +23,7 @@ mission design, and scientific computing portfolios.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 constants.py — physical constants  
 dynamics.py — propagation + gravitational model  
 elements.py — Cartesian → orbital elements  
@@ -36,7 +33,7 @@ input.json — user-defined initial conditions
 
 ---
 
-## ▶️ Usage
+## Usage
 
 Install dependencies:  
 `pip install numpy scipy plotly`
@@ -48,8 +45,8 @@ Input JSON file can be copied and modified to simulate custom orbits
 
 ---
 
-## 🔧 Extend the Project
-Easy to expand with:  
+## Future Expansion
+Future additions can include:  
 - J2 or higher-order gravity  
 - Drag, SRP, or custom forces  
 - Maneuver modeling  
